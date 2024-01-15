@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Simple Website</title>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+  <script src="front.js" defer></script>
+</head>
+<body>
+  <div id="container">
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" required>
+    <br>
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" required>
+    <br>
+    <label for="number">Number:</label>
+    <input type="number" id="number" required>
+    <br>
+    <button id="runButton">Run Script</button>
+    <div id="loader"></div>
+  </div>
+</body>
+</html>
