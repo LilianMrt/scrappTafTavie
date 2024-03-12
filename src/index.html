@@ -4,11 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>Simple Website</title>
+  <title>Oeoeoe</title>
   <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
   <script src="front.js" defer></script>
 </head>
 <body>
+  <div id="sidebar">
+    <button id="showValuesButton">Show Values</button>
+    <div id="valuesContainer">
+      <p id="mailValue"></p>
+    </div>
+  </div>
   <div id="container">
     <label for="startDate">Start Date:</label>
     <input type="date" id="startDate" required>
@@ -21,6 +27,8 @@
     <br>
     <button id="runButton">Run Script</button>
     <div id="loader"></div>
+    <div id="updateText"></div>
+    <div id="errorText"></div>
   </div>
 </body>
 </html>

@@ -1,10 +1,10 @@
-const KASPER_API_KEY = "Bearer 01bcf57528e8400c926dba8a80dfa2cc";
+const KASPER_API_KEY = "Bearer 56ab2f32090b419798fb630528330a4e";
 
 const url = "https://api.developers.kaspr.io/profile/linkedin";
 
 const kasperFunc = async (id, name) => {
-  if (id===null && name===null){
-    return { workEmail: "", phone: "", directEmail: "" };
+  if (id === null && name === null) {
+    return { workEmail: "" };
   }
   const options = {
     method: "POST",
@@ -14,18 +14,19 @@ const kasperFunc = async (id, name) => {
       Accept: "application/json",
       authorization: KASPER_API_KEY,
     },
-    body: '{"id":"'+ id + '","name":"' + name + '","dataToGet":["phone","workEmail","directEmail"]}',
+    body: '{"id":"' + id + '","name":"' + name + '","dataToGet":["workEmail"]}',
   };
-  try{
-        const response = await fetch(url, options);
-        const data = await response.json();
-        return {
-          workEmail: data.profile.starryWorkEmail,
-          phone: data.profile.starryPhone,
-          directEmail: data.profile.starryDirectEmail,
-        };
-    } catch (error) {
-      return {workEmail:"", phone: "", directEmail: ""}
-    }
-}
-module.exports = kasperFunc
+  try {
+    const response = await fetch(url, options);
+    const data = await response.json();
+    return {
+      workEmail: data?.profile?.starryWorkEmail || "",
+    };
+  } catch (error) {
+    if (error.response.status === 429) {
+      throw new Error(error.response.data)
+    } 
+    return { workEmail: "" };
+  }
+};
+module.exports = kasperFunc;
